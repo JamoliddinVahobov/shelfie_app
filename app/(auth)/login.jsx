@@ -3,17 +3,17 @@ import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import { HSpacer } from '../../components/Spacers'
 import { Link } from 'expo-router'
-import { Colors } from '../../constants/Colors'
+import MainButton from '../../components/MainButton'
 
 const Login = () => {
+  function submitLoginForm() {
+    console.log('Login form submitted');
+  }
+
   return (
     <ThemedView style={styles.container}>
       <ThemedText title style={styles.title}>Login to your account</ThemedText>
-
-     <Pressable style={({ pressed }) => [styles.btn, pressed && styles.pressed]}>
-      <Text>Login</Text>
-     </Pressable>
- 
+      <MainButton onPress={submitLoginForm} label={"Login"}/>
       <HSpacer h={100} />
       <Link href="/register">
       <ThemedText style={{textAlign: 'center'}}>Register instead</ThemedText>
@@ -34,10 +34,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 30,  
   },
-  btn: {
-    backgroundColor: Colors.primary,
-    padding: 15,
-    borderRadius: 5,
-  },
-  pressed: { opacity: 0.8 }
 }) 
